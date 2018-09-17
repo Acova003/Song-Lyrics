@@ -1,7 +1,7 @@
 class SongLyrics::Info
   attr_accessor :artist, :title
 
-  @@all = []
+  @all = []
 
   def initialize(artist, title)
     @artist = artist
