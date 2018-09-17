@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'pry'
+require 'json'
 
 require_relative './song_lyrics/version'
 require_relative './song_lyrics/cli'
