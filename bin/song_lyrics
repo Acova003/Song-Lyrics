@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/song_lyrics'
+
+SongLyrics::CLI.new.start
