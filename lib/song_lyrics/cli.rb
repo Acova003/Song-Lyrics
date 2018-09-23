@@ -2,36 +2,27 @@ class SongLyrics::CLI
   def start
     puts ""
     puts ""
-    puts "                        Welcome to Beatles Mania!"
+    puts "                        Welcome ".blue + "to " + "Beatles Mania!".red
+    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     puts ""
-    puts "  Abbey Road is the eleventh studio album by English rock band the Beatles,
-    released on 26 September 1969 by Apple Records. The recording sessions
-    for the album were the last in which all four Beatles participated. It
-         is considered one of the greatest rock albums of all time."
-    puts ""
-    puts "Choose which song on the Abbey Road album that you would like lyrics for: (1-17)"
     puts ""
     menu
   end
 
   def menu
+    puts ""
+    puts "Choose which Beatles hit you would like to know more about: (1-10)"
+    puts ""
     puts '1. Come Together'
     puts '2. Something'
-    puts '3. Maxwell\'s Silver Hammer'
-    puts '4. Oh! Darling'
-    puts '5. Octopuses\'s Garden'
-    puts '6. I Want You (She\'s So Heavy)'
-    puts '7. Here Comes the Sun'
+    puts '3. Hey Jude'
+    puts '4. Yesterday'
+    puts '5. Here Comes the Sun'
+    puts '6. A Day in the Life'
+    puts '7. Eleanor Rigby'
     puts '8. Because'
-    puts '9. You Never Give Me Your Money'
-    puts '10. Sun King'
-    puts '11. Mean Mr. Mustard'
-    puts '12. Polythene Pam'
-    puts '13. She Came in Through the Bathroom Window'
-    puts '14. Golden Slumbers'
-    puts '15. Carry That Weight'
-    puts '16. The End'
-    puts '17. Her Majesty'
+    puts '9. Let It Be'
+    puts '10. All You Need Is Love'
     input
   end
 
@@ -39,10 +30,49 @@ class SongLyrics::CLI
     puts '>'
     user_input = gets.strip
     case user_input
-    when '1'
-      #@url = "https://api.lyrics.ovh/v1/The%20Beatles/Come%20Together"
+      when '1'
+        SongLyrics::ApiService.get_come_together
+      when '2'
+        SongLyrics::ApiService.get_something
+      when '3'
+        SongLyrics::ApiService.get_hey_jude
+      when '4'
+        SongLyrics::ApiService.get_yesterday
+      when '5'
+        SongLyrics::ApiService.get_here_comes_the_sun
+      when '6'
+        SongLyrics::ApiService.get_a_day_in_the_life
+      when '7'
+        SongLyrics::ApiService.get_eleanor_rigby
+      when '8'
+        SongLyrics::ApiService.get_because
+      when '9'
+        SongLyrics::ApiService.get_let_it_be
+      when '10'
+        SongLyrics::ApiService.get_all_you_need_is_love
+      else
+        puts "Invalid input. Please choose a number between 1-10".red
+        menu
     end
-    SongLyrics::ApiService.get_response
+    continue?
+  end
+
+  def continue?
+    puts ""
+    puts "To choose another song, type '1'. To exit, type '2'"
+    user_input = gets.strip
+    if user_input == '1'
+      menu
+    elsif user_input == '2'
+      goodbye
+    else
+      puts "Invalid input. Please type '1' or '2'".red
+      continue?
+    end
+  end
+
+  def goodbye
+    puts "Goodbye"
   end
 end
 
