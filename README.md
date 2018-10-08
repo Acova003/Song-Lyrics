@@ -1,8 +1,6 @@
 # SongLyrics
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/song_lyrics`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the song_lyrics gem! In this program, we are displaying a catalogue of top 10 Beatles songs. The user then has the choice of which song they would like lyrics for. SongLyrics then makes an api request to the open source api service, lyrics.ovh, based on the user's response. 
 
 ## Installation
 
