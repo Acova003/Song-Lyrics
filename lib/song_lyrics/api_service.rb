@@ -23,6 +23,6 @@ class SongLyrics::ApiService
     converted_url = URI::encode(DATA_HASH[user_input])
     response = RestClient.get(BASE_URL + converted_url) # + DATA_HASH[CLI user_input]
     json = JSON.parse(response) #+ value of corresponding key in DATA_HASH
-    puts json['lyrics']
+    json.each {|k, v| puts v}
   end
 end
