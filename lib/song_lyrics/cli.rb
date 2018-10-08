@@ -28,31 +28,13 @@ class SongLyrics::CLI
 
   def input
     puts '>'
-    user_input = gets.strip
-    case user_input
-      when '1'
-        SongLyrics::ApiService.get_come_together
-      when '2'
-        SongLyrics::ApiService.get_something
-      when '3'
-        SongLyrics::ApiService.get_hey_jude
-      when '4'
-        SongLyrics::ApiService.get_yesterday
-      when '5'
-        SongLyrics::ApiService.get_here_comes_the_sun
-      when '6'
-        SongLyrics::ApiService.get_a_day_in_the_life
-      when '7'
-        SongLyrics::ApiService.get_eleanor_rigby
-      when '8'
-        SongLyrics::ApiService.get_because
-      when '9'
-        SongLyrics::ApiService.get_let_it_be
-      when '10'
-        SongLyrics::ApiService.get_all_you_need_is_love
-      else
-        puts "Invalid input. Please choose a number between 1-10".red
-        menu
+    @user_input = gets.strip
+    if @user_input.to_i.between?(1,10)
+      #binding.pry
+      SongLyrics::ApiService.get_lyrics(@user_input)
+    else
+      puts "Invalid input. Please choose a number between 1-10".red
+      menu
     end
     continue?
   end
@@ -75,5 +57,3 @@ class SongLyrics::CLI
     puts "Goodbye"
   end
 end
-
-#how can I call specific url in api service?
